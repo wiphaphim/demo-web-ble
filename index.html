@@ -104,6 +104,11 @@
       }
     }
 
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var onechat_token = url.searchParams.get("onechat_token");
+    console.log("onechat_token ===>", onechat_token);
+
     // const getUser = () => {
     //   var url_string = window.location.href
     //   var url = new URL(url_string);
@@ -131,11 +136,6 @@
     //     console.log(error);
     //     });
     // }
-
-    
-    
-  
-
     
   </script>
   <body>
