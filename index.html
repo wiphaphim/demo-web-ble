@@ -125,7 +125,9 @@
 
       axios(config)
       .then(function (response) {
-          console.log(JSON.stringify("data ===>", response.data));
+        console.log("reponse...");
+          console.log(JSON.stringify(response.data));
+          console.log(response);
       })
       .catch(function (error) {
           console.log(error);
