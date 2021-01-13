@@ -67,7 +67,7 @@
             message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
           document.getElementById("listdevice").innerHTML = message;
-          document.getElementById("device").value = value
+          uuid_device01 = document.getElementById("device").value
         } else if (type == "get_service") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อบริการ </u><br/>";
@@ -81,7 +81,7 @@
             }
           }
           document.getElementById("listservice").innerHTML = message;
-          document.getElementById("device").value = value
+          uuid_service01 = document.getElementById("device").value
         } else if (type == "get_characteristic") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อcharacteristic</u><br/>";
@@ -111,7 +111,9 @@
       var url = new URL(url_string);
       var onechat_token = url.searchParams.get("onechat_token");
       console.log("onechat_token ===>", onechat_token);
+      return onechat_token
     }
+
 
     
 
@@ -188,7 +190,8 @@
     <!-- <br /><button onclick="getUser();">get token</button> -->
     <form action="http://localhost:3000/getUser" method="POST">
       <button onclick="getToken()">get token</button>
-      <!-- <button type="submit">Send to backend</button> -->
+      
+      <button type="submit">Send to backend</button>
     </form>
   </body>
 </html>
