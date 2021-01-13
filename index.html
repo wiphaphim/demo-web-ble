@@ -104,12 +104,15 @@
       }
     }
 
-    // var url = window.location.href
-    // console.log("url ===>", url);
+    var url_string = window.location.href
+    console.log("url ===>", url_string);
+    console.log(typeof(url_string));
+    var url = new URL(url_string);
+    var onechat_token = url.searchParams.get("onechat_token");
+    console.log("onechat_token ===>", onechat_token);
     const queryString = window.location.search;
     console.log("queryString ===>", queryString);
-    const onechat_token = urlParams.get('onechat_token')
-    console.log("onechat_token ===>", onechat_token);
+  
 
     
   </script>
