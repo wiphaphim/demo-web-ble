@@ -60,33 +60,33 @@
         if (type == "get_device_service") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่ออุปกรณ์ </u><br/>";
-          uuid_device01 = obj.data[0].uuid;
+          // uuid_device = obj.data[0].uuid;
           for (var i = 0; i < obj.data.length; i += 1) {
-            message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
+            var option = `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
+            message = message + `<select name="device" id="device">` + option + "</select>"
+            // message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
           document.getElementById("listdevice").innerHTML = message;
+          uuid_device = document.getElementById("device").value
         } else if (type == "get_service") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อบริการ </u><br/>";
-          uuid_service01 = obj.uuid[0];
+          // uuid_service = obj.uuid[0];
           for (var i = 0; i < obj.uuid.length; i += 1) {
-            message = message + "<p>" + obj.uuid[i] + "</p>";
+            var option = `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
+            message = message + `<select name="service" id="service">` + option + "</select>"
+            // message = message + "<p>" + obj.uuid[i] + "</p>";
             if (obj.uuid[i] == "AB10") {
-              uuid_service01 = "AB10";
+              uuid_service = "AB10";
             }
           }
           document.getElementById("listservice").innerHTML = message;
+          uuid_service = document.getElementById("device").value
         } else if (type == "get_characteristic") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อcharacteristic</u><br/>";
           for (var i = 0; i < obj.data.length; i += 1) {
-            message =
-              message +
-              "<p>" +
-              obj.data[i].uuid +
-              "(" +
-              obj.data[i].type +
-              ")</p>";
+            message = message + "<p>" + obj.data[i].uuid + "(" + obj.data[i].type + ")</p>";
             if (obj.data[i].type == "read") {
               uuid_characteristic_read = obj.data[i].uuid;
             } else if (obj.data[i].type == "write") {
@@ -104,33 +104,33 @@
       }
     }
 
-    const getUser = () => {
-      var url_string = window.location.href
-      var url = new URL(url_string);
-      var onechat_token = url.searchParams.get("onechat_token");
-      console.log("onechat_token ===>", onechat_token);
+    // const getUser = () => {
+    //   var url_string = window.location.href
+    //   var url = new URL(url_string);
+    //   var onechat_token = url.searchParams.get("onechat_token");
+    //   console.log("onechat_token ===>", onechat_token);
 
-      // var data = JSON.stringify({"bot_id":"B06e1ba78784f59e7b7a6f8f0a9fc35ac","source":onechat_token});
+    //   // var data = JSON.stringify({"bot_id":"B06e1ba78784f59e7b7a6f8f0a9fc35ac","source":onechat_token});
 
-      var config = {
-      method: 'post',
-      url: 'http://127.0.0.1:3000/getuser',
-      headers: { 
-          // 'Authorization': 'Bearer Afa48433443b75789b529a8fcef1b4eff295a28438b524eec8ccdb3855a95a311ff240b8d6733489fa86fc17ded6c9719', 
-          'onechat_token': onechat_token,
-          'Content-Type': 'application/json'
-      },
-      // data : data
-      };
+    //   var config = {
+    //   method: 'post',
+    //   url: 'http://127.0.0.1:3000/getuser',
+    //   headers: { 
+    //       // 'Authorization': 'Bearer Afa48433443b75789b529a8fcef1b4eff295a28438b524eec8ccdb3855a95a311ff240b8d6733489fa86fc17ded6c9719', 
+    //       'onechat_token': onechat_token,
+    //       'Content-Type': 'application/json'
+    //   },
+    //   // data : data
+    //   };
 
-      axios(config)
-      .then(function (response) {
-      console.log(JSON.stringify("data ===>", response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-        });
-    }
+    //   axios(config)
+    //   .then(function (response) {
+    //   console.log(JSON.stringify("data ===>", response.data));
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //     });
+    // }
 
     
     
@@ -179,6 +179,6 @@
     <h1><a href="javascript:writeCharacteristic();">write</a></h1>
     <br />
 
-    <br /><button onclick="getUser();">get token</button>
+    <!-- <br /><button onclick="getUser();">get token</button> -->
   </body>
 </html>
