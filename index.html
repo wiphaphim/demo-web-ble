@@ -60,9 +60,10 @@
         if (type == "get_device_service") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่ออุปกรณ์ </u><br/>";
+          var option = []
           uuid_device = obj.data[0].uuid;
           for (var i = 0; i < obj.data.length; i += 1) {
-            var option = `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
+            option = option + `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
             message = message + `<select name="device" id="device">` + option + "</select>"
             message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
@@ -104,11 +105,16 @@
       }
     }
 
-    var url_string = window.location.href
-    console.log("url ===> ", url_string);
-    var url = new URL(url_string);
-    var onechat_token = url.searchParams.get("onechat_token");
-    console.log("onechat_token ===>", onechat_token);
+      
+    const getToken = () => {
+      var url_string = window.location.href
+      // console.log("url ===> ", url_string);
+      var url = new URL(url_string);
+      var onechat_token = url.searchParams.get("onechat_token");
+      console.log("onechat_token ===>", onechat_token);
+    }
+
+    
 
     // const getUser = () => {
     //   var url_string = window.location.href
@@ -182,9 +188,8 @@
 
     <!-- <br /><button onclick="getUser();">get token</button> -->
     <form action="http://localhost:3000/getUser" method="POST">
-      First name: <input type="text" name="fname"><br>
-      Last name: <input type="text" name="lname"><br>
-     <button type="submit">Send to backend</button>
+      <button onclick="getToken()">get token</button>
+      <button type="submit">Send to backend</button>
     </form>
   </body>
 </html>
