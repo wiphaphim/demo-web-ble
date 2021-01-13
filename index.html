@@ -62,7 +62,7 @@
           var message = "<u>รายชื่ออุปกรณ์ </u><br/>";
           uuid_device = obj.data[0].uuid;
           for (var i = 0; i < obj.data.length; i += 1) {
-            // var option = `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
+            var option = `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
             message = message + `<select name="device" id="device">` + option + "</select>"
             message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
@@ -181,5 +181,10 @@
     <br />
 
     <!-- <br /><button onclick="getUser();">get token</button> -->
+    <form action="http://localhost:3000/getUser" method="POST">
+      First name: <input type="text" name="fname"><br>
+      Last name: <input type="text" name="lname"><br>
+     <button type="submit">Send to backend</button>
+    </form>
   </body>
 </html>
