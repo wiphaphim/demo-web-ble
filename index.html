@@ -68,7 +68,7 @@
             message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
           document.getElementById("listdevice").innerHTML = message;
-          uuid_device01 = document.getElementById("device").value
+          document.getElementById("device").value
         } else if (type == "get_service") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อบริการ </u><br/>";
@@ -82,7 +82,7 @@
             }
           }
           document.getElementById("listservice").innerHTML = message;
-          uuid_service01 = document.getElementById("device").value
+          document.getElementById("device").value
         } else if (type == "get_characteristic") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อcharacteristic</u><br/>";
@@ -110,15 +110,15 @@
     var url = new URL(url_string);
     var onechat_token = url.searchParams.get("onechat_token");
     console.log("onechat_token ===>", onechat_token);
-    var data = JSON.stringify({"bot_id":"B06e1ba78784f59e7b7a6f8f0a9fc35ac","source":onechat_token});
+    // var data = JSON.stringify({"bot_id":"B06e1ba78784f59e7b7a6f8f0a9fc35ac","source":onechat_token});
     var config = {
     method: 'post',
-    url: 'https://chat-api.one.th/manage/api/v1/getprofile',
+    url: 'http://localhost:3000/getUser',
     headers: { 
-        'Authorization': 'Bearer Afa48433443b75789b529a8fcef1b4eff295a28438b524eec8ccdb3855a95a311ff240b8d6733489fa86fc17ded6c9719', 
+        'onechat_token': onechat_token, 
         'Content-Type': 'application/json'
     },
-    data : data
+    // data : data
     };
 
     axios(config)
