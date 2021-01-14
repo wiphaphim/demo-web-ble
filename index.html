@@ -64,11 +64,12 @@
           // uuid_device01 = obj.data[0].uuid;
           for (var i = 0; i < obj.data.length; i += 1) {
             var option = option + `<option value= ${obj.uuid[i]} >` + obj.uuid[i] + "</option>"
+            // message = message + '<input list="uuid_device01" name="uuid_device01" id="uuid_device01">'
             message = message + `<select name="device" id="device">` + option + "</select>"
+            // message = message + '<input type="submit">'
             message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
-          let selected = { device: document.getElementById("device").value }
-          message = message + "<p>" + "selected is ..." + selected + "</p>"
+          uuid_device01 = document.getElementById("device").value
           document.getElementById("listdevice").innerHTML = message;
         } else if (type == "get_service") {
           var obj = JSON.parse(data);
@@ -82,8 +83,8 @@
               uuid_service = "AB10";
             }
           }
+          uuid_service01 = document.getElementById("service").value
           document.getElementById("listservice").innerHTML = message;
-          // document.getElementById("device").value
         } else if (type == "get_characteristic") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อcharacteristic</u><br/>";
