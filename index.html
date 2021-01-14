@@ -69,8 +69,8 @@
             // message = message + '<input type="submit">'
             message = message + "<p>" + obj.data[i].bluetooth_name + "</p>";
           }
-          uuid_device01 = document.getElementById("device").value
           document.getElementById("listdevice").innerHTML = message;
+          uuid_device01 = document.getElementById("device").value
         } else if (type == "get_service") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อบริการ </u><br/>";
@@ -83,8 +83,8 @@
               uuid_service = "AB10";
             }
           }
-          uuid_service01 = document.getElementById("service").value
           document.getElementById("listservice").innerHTML = message;
+          uuid_service01 = document.getElementById("service").value
         } else if (type == "get_characteristic") {
           var obj = JSON.parse(data);
           var message = "<u>รายชื่อcharacteristic</u><br/>";
